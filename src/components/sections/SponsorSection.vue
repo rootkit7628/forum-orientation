@@ -1,23 +1,16 @@
 <script>
-import PocketBase from 'pocketbase'
+import pocketbaseService from '@/services/pocketbase'
 
 export default {
   name: 'SponsorSection',
   data() {
     return {
-      sponsors: Object,
-      service: PocketBase
+      sponsors: Object
     }
   },
 
   created() {
-    const service = new PocketBase(import.meta.env.VITE_PB_URL)
-    service.admins.authWithPassword({
-      email: import.meta.env.VITE_PB_USER,
-      password: import.meta.env.VITE_PB_PASSWORD
-    })
-
-    let entities = service.collection('entities').getList()
+    let entities = pocketbaseService.collection('entities').getList()
     console.log(entities)
   },
 

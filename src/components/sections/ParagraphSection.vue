@@ -9,7 +9,7 @@ export default {
     <div class="card border-0 w-100">
       <div class="card-body">
         <h2 class="card-title">Forum de l'orientation et de l'employabilité 2024</h2>
-        <h6 class="card-subtitle mb-2 text-muted">
+        <h6 class="card-subtitle mb-2 text-success">
           le 30 Mai et 01 Juin, 2024 | Campus SESAME, Enceinte UCM Ambatoraka
         </h6>
         <p class="card-text py-2">

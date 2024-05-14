@@ -1,8 +1,7 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light p-2">
+  <nav class="navbar navbar-expand-lg navbar-light rounded p-2">
     <div class="container-fluid">
       <a class="navbar-brand" to="#">
         <img
@@ -28,7 +27,7 @@
           <RouterLink to="/" class="nav-item nav-link">Speakers</RouterLink>
           <RouterLink to="/" class="nav-item nav-link">Sponsors</RouterLink>
           <RouterLink to="/" class="nav-item nav-link">Expo</RouterLink>
-          <RouterLink to="/" type="button" class="btn btn-primary ms-2">Visiter</RouterLink>
+          <RouterLink to="/register" type="button" class="btn btn-primary ms-2">Visiter</RouterLink>
         </div>
       </div>
     </div>

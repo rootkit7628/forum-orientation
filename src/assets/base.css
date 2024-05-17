@@ -20,11 +20,11 @@
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 
-  --bg-red: hsl(0, 44%, 87%);
-  --btn-primary: #d12b2f;
-  --btn-primary-hover: #b32025;
-  --btn-secondary: #3fae2b;
-  --btn-secondary-hover: #2e791e;
+  --white-red: hsl(0, 44%, 87%);
+  --primary: #d12b2f;
+  --primary-hover: #b32025;
+  --secondary: #3fae2b;
+  --secondary-hover: #2e791e;
 }
 
 /* semantic color variables for this project */
@@ -67,7 +67,7 @@
 body {
   min-height: 100vh;
   color: var(--color-text);
-  background: var(--color-background);
+  background: var(--bg-red) !important;
   transition:
     color 0.5s,
     background-color 0.5s;
@@ -92,20 +92,25 @@ body {
 }
 
 .btn-primary {
-  background-color: var(--btn-primary) !important;
+  background-color: var(--primary) !important;
   color: var(--vt-c-white) !important;
-  border: var(--btn-primary) !important;
+  border: var(--primary) !important;
 }
 
 .btn-primary:hover {
-  background-color: var(--btn-primary-hover) !important;
+  background-color: var(--primary-hover) !important;
 }
 
 .btn-secondary {
-  background-color: var(--btn-secondary) !important;
+  background-color: var(--secondary) !important;
   color: var(--vt-c-white) !important;
+  border: 0 !important;
 }
 
 .btn-secondary:hover {
-  background-color: var(--btn-secondary-hover) !important;
+  background-color: var(--secondary-hover) !important;
+}
+
+.bg-white-red {
+  background-color: var(--white-red) !important;
 }

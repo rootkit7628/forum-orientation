@@ -8,21 +8,21 @@ export default {
       email: null
     }
   },
-  beforeCreatereated() {
+  beforeCreate() {
     if (localStorage.getItem('session')) {
-      this.$router.push({ name: 'expo' })
+      this.$router.push({ name: 'stand' })
     }
   },
 
   methods: {
     register() {
-      const data = {
+      const user = JSON.stringify({
         name: this.name,
         email: this.email
-      }
-      const encryptedData = encrypt(data)
+      })
+      const encryptedData = encrypt(user)
       localStorage.setItem('session', encryptedData)
-      this.$router.push({ name: 'expo' })
+      this.$router.push({ name: 'stand' })
     }
   }
 }
@@ -39,11 +39,11 @@ export default {
               <form @submit.prevent="register">
                 <div class="mb-4">
                   <label for="name" class="form-label">Nom</label>
-                  <input v-model="name" type="text" class="form-control" id="name" autocomplete="username" required />
+                  <input v-model="name" type="text" class="form-control" id="name" autocomplete="name" required />
                 </div>
                 <div class="mb-4">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" autocomplete="email" />
+                  <input v-model="email" type="email" class="form-control" id="email" autocomplete="email" />
                 </div>
                 <div class="mb-3 form-check">
                   <input type="checkbox" class="form-check-input" id="check-me-out" />

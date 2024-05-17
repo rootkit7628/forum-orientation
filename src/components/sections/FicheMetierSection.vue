@@ -22,62 +22,56 @@
         </div>
 
         <div class="job-list container">
-            <div class="job-item">
+            <div class="job-item p-2 bg-light rounded">
                 <div class="job-title">
-                <img src="https://via.placeholder.com/40" alt="Product Manager">
+                <img class="rounded" src="https://via.placeholder.com/40" alt="Product Manager">
                 <div>
-                    <h5 class="mb-0">Product Manager</h5>
-                    <small>1.5k members</small>
+                    <p class="mb-0">Product Manager</p>
                 </div>
                 </div>
                 <button class="btn btn-secondary bg-opacity-10">Afficher</button>
             </div>
-            <div class="job-item">
+            <div class="job-item p-2 bg-light rounded">
                 <div class="job-title">
-                <img src="https://via.placeholder.com/40" alt="Product Designer">
+                <img class="rounded" src="https://via.placeholder.com/40" alt="Product Designer">
                 <div>
-                    <h5 class="mb-0">Product Designer</h5>
-                    <small>1.5k members</small>
+                    <p class="mb-0">Responsables Achats</p>
                 </div>
                 </div>
                 <button class="btn btn-secondary bg-opacity-10">Afficher</button>
             </div>
-            <div class="job-item">
+            <div class="job-item p-2 bg-light rounded">
                 <div class="job-title">
-                <img src="https://via.placeholder.com/40" alt="Software Engineer">
+                <img class="rounded" src="https://via.placeholder.com/40" alt="Software Engineer">
                 <div>
-                    <h5 class="mb-0">Software Engineer</h5>
-                    <small>1.5k members</small>
+                    <p class="mb-0">Responsable Vignes et Chais</p>
                 </div>
                 </div>
                 <button class="btn btn-secondary bg-opacity-10">Afficher</button>
             </div>
-            <div class="job-item">
+            <div class="job-item p-2 bg-light rounded">
                 <div class="job-title">
-                <img src="https://via.placeholder.com/40" alt="Data Analyst">
+                <img class="rounded" src="https://via.placeholder.com/40" alt="Data Analyst">
                 <div>
-                    <h5 class="mb-0">Data Analyst</h5>
-                    <small>1.5k members</small>
+                    <p class="mb-0">Bachelor Finance</p>
                 </div>
                 </div>
                 <button class="btn btn-secondary bg-opacity-10">Afficher</button>
             </div>
-            <div class="job-item">
+            <div class="job-item p-2 bg-light rounded">
                 <div class="job-title">
-                <img src="https://via.placeholder.com/40" alt="Data Scientist">
+                <img class="rounded" src="https://via.placeholder.com/40" alt="Data Scientist">
                 <div>
-                    <h5 class="mb-0">Data Scientist</h5>
-                    <small>1.5k members</small>
+                    <p class="mb-0">BTS Tourisme</p>
                 </div>
                 </div>
                 <button class="btn btn-secondary bg-opacity-10">Afficher</button>
             </div>
-            <div class="job-item">
+            <div class="job-item p-2 bg-light rounded">
                 <div class="job-title">
-                <img src="https://via.placeholder.com/40" alt="UX Designer">
+                <img class="rounded" src="https://via.placeholder.com/40" alt="UX Designer">
                 <div>
-                    <h5 class="mb-0">UX Designer</h5>
-                    <small>1.5k members</small>
+                    <p class="mb-0">Conseiller en voyages</p>
                 </div>
                 </div>
                 <button class="btn btn-secondary bg-opacity-10">Afficher</button>
@@ -114,9 +108,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 5px;
   margin-bottom: 10px;
 }
 .job-item img {

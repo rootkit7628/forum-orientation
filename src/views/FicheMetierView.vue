@@ -1,4 +1,17 @@
-<script setup></script>
+<script>
+import FicheMetierSection from '@/components/sections/FicheMetierSection.vue'
+export default {
+  name: 'FicheMetierView',
+  components: {
+    FicheMetierSection
+  },
+  data() {
+    return {
+      fiche_metier: null,
+    }
+  }
+}
+</script>
 <template>
-  <section>Fiche metier</section>
+  <FicheMetierSection ></FicheMetierSection>
 </template>

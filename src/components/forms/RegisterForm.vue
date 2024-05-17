@@ -1,5 +1,5 @@
 <script>
-import { encrypt, decrypt } from '@/utils/crypto'
+import { encrypt } from '@/utils/crypto'
 export default {
   name: 'RegisterForm',
   data() {
@@ -30,8 +30,8 @@ export default {
 
 <template>
   <section>
-    <div class="container mt-5">
-      <div class="row mt-5">
+    <div class="container my-5">
+      <div class="row my-5">
         <div class="col-md-6 offset-md-3 mt-5">
           <div class="card py-5 px-3 shadow border-0">
             <div class="card-body">

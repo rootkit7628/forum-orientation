@@ -1,20 +1,22 @@
 <script setup>
-import Navbar from '@/components/Navbar.vue'
-import Footer from './components/Footer.vue'
+import HeaderBar from '@/components/navbar/HeaderBar.vue'
+import FooterBar from './components/navbar/FooterBar.vue'
 </script>
 
 <template>
-  <header>
-    <Navbar />
-  </header>
-  <RouterView />
-
-  <Footer />
+    <HeaderBar />
+    <main class="container-fluid">
+     <RouterView />
+    </main>
+    <FooterBar />
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
 }
 </style>

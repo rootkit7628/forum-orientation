@@ -8,10 +8,24 @@ export default {
       user: null
     }
   },
-  created() {
-    const session = localStorage.getItem('session')
-    if (session) {
-      this.user = JSON.parse(decrypt(session))
+  mounted() {
+    this.setUser()
+  },
+  updated() {
+    this.setUser()
+  },
+  methods: {
+    setUser() {
+      const session = localStorage.getItem('session')
+      if (session) {
+        this.user = JSON.parse(decrypt(session))
+      }
+    },
+    logout() {
+      localStorage.removeItem('session')
+      this.user = null
+      console.log()
+      this.$router.push('/')
     }
   }
 }
@@ -40,7 +54,7 @@ export default {
             <div v-else-if="user" class="dropdown ms-2">
               <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user.name }}</button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Logout</a></li>
+                <li><a class="dropdown-item" href="#" @click="logout()">Se Déconnecter</a></li>
               </ul>
             </div>
           </div>

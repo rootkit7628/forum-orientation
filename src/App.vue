@@ -1,14 +1,14 @@
 <script setup>
-import HeaderBar from '@/components/navbar/HeaderBar.vue'
-import FooterBar from './components/navbar/FooterBar.vue'
+import HeaderBar from '@/components/navbars/HeaderBar.vue'
+import FooterBar from '@/components/navbars/FooterBar.vue'
 </script>
 
 <template>
-    <HeaderBar />
-    <main class="container-fluid">
-     <RouterView />
-    </main>
-    <FooterBar />
+  <HeaderBar />
+  <main class="container-fluid">
+    <RouterView />
+  </main>
+  <FooterBar />
 </template>
 
 <style scoped>

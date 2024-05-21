@@ -9,16 +9,16 @@ export default {
     }
   },
 
-  async mounted() {
-    if (pocketbaseService) {
-      await pocketbaseService
-        .collection('entities')
-        .getList()
-        .then((response) => {
-          this.sponsors = response.items
-        })
-    }
-  },
+  // async mounted() {
+  //   if (pocketbaseService) {
+  //     await pocketbaseService
+  //       .collection('entities')
+  //       .getList()
+  //       .then((response) => {
+  //         this.sponsors = response.items
+  //       })
+  //   }
+  // },
 
   methods: {
     getPocketbaseUrl(data) {

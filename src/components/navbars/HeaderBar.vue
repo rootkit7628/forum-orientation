@@ -11,9 +11,6 @@ export default {
   mounted() {
     this.setUser()
   },
-  updated() {
-    this.setUser()
-  },
   methods: {
     setUser() {
       const session = localStorage.getItem('session')

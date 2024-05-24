@@ -59,8 +59,8 @@ export default {
             <RouterLink v-if="$route.name != 'home'" to="/conference" class="nav-item nav-link">Conference</RouterLink>
             <RouterLink v-if="$route.name != 'home'" to="/fiche-metier" class="nav-item nav-link">Fiche Metier</RouterLink>
             <RouterLink v-if="$route.name == 'home'" to="/register" type="button" class="nav-item btn btn-primary ms-2">Visiter</RouterLink>
-            <RouterLink v-if="user" to="/test" type="button" class="btn btn-danger ms-2 text-white h-75">Test d'orientation</RouterLink>
-            <div v-if="user" class="dropdown ms-2">
+            <RouterLink v-if="$route.name != 'home' && $route.name != 'register'" to="/test" type="button" class="btn btn-danger ms-2 text-white h-75">Test d'orientation</RouterLink>
+            <div v-if="$route.name != 'home' && $route.name != 'register'" class="dropdown ms-2">
               <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ initial }}</button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#" @click="logout()">Se Déconnecter</a></li>

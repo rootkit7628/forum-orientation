@@ -11,9 +11,10 @@ export default {
         <h2 class="card-title">Forum de l'orientation et de l'employabilité 2024</h2>
         <h6 class="card-subtitle mb-2 text-success">le 30 Mai et 01 Juin, 2024 | Campus SESAME, Enceinte UCM Ambatoraka</h6>
         <p class="card-text py-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et arcu eleifend, dapibus quam eget, pellentesque ante. Curabitur cursus nisi mauris, ac fringilla lacus posuere eget. Nulla id
-          massa nec nunc egestas condimentum ut at metus. Donec a ligula volutpat, fringilla purus dignissim, accumsan est. Nullam bibendum faucibus neque, a consequat felis aliquet vel. Praesent
-          vitae varius metus. Etiam posuere nunc ac neque tincidunt ultrices.
+          Bienvenue au Forum de l'Orientation et de l'Employabilité 2024 ! Rejoignez-nous pour un événement incontournable dédié à votre avenir professionnel. Explorez les stands des entreprises et
+          des universités, assistez à des conférences inspirantes et participez à des ateliers interactifs. Ne manquez pas les sessions de speed recruiting pour rencontrer vos futurs employeurs, et
+          découvrez une variété de métiers grâce à nos expositions de fiches métiers. Que vous soyez étudiant, jeune diplômé ou en reconversion professionnelle, cet événement est l'occasion idéale
+          pour vous orienter et booster votre employabilité.
         </p>
       </div>
     </div>

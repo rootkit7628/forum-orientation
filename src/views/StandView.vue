@@ -1,7 +1,7 @@
 <script>
 import { decrypt } from '@/utils/crypto'
+import StandModal from '@/components/modals/StandModal.vue'
 export default {
-  name: 'StandView',
   data() {
     return {
       user: {
@@ -9,6 +9,9 @@ export default {
         email: ''
       }
     }
+  },
+  components: {
+    StandModal
   },
   created() {
     if (!localStorage.getItem('session')) {
@@ -30,7 +33,7 @@ export default {
             <h3 class="ps-3">
               Bienvenu sur nos stands, <span class="text-success fw-bold">{{ user.name }}</span>
             </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at nulla consequat, dictum nisi ut, mattis nibh.</p>
+            <p>Rencontrez des entreprises, des universités et des experts métiers prêts à répondre à vos questions et à vous guider dans votre avenir professionnel.</p>
           </div>
         </div>
       </div>
@@ -43,9 +46,10 @@ export default {
               <h5>Stand 1</h5>
               <p>Integer mauris neque, gravida at euismod rutrum, venenatis in lorem...</p>
             </div>
-            <button class="btn btn-primary my-3">VISITER</button>
+            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_1">VISITER</button>
           </div>
         </div>
+        <StandModal stand_id="1" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
 
         <div class="col-sm-6 col-lg-4">
           <div class="feature-box-1">
@@ -56,9 +60,10 @@ export default {
               <h5>Stand 2</h5>
               <p>Quisque risus dolor, bibendum nec eros a, rutrum varius tellus. Maecenas ...</p>
             </div>
-            <button class="btn btn-primary my-3">VISITER</button>
+            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_2">VISITER</button>
           </div>
         </div>
+        <StandModal stand_id="2" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
 
         <div class="col-sm-6 col-lg-4">
           <div class="feature-box-1">
@@ -69,9 +74,10 @@ export default {
               <h5>Stand 3</h5>
               <p>Quisque risus dolor, bibendum nec eros a, rutrum varius tellus. Maecenas ...</p>
             </div>
-            <button class="btn btn-primary my-3">VISITER</button>
+            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_3">VISITER</button>
           </div>
         </div>
+        <StandModal stand_id="3" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
 
         <div class="col-sm-6 col-lg-4">
           <div class="feature-box-1">
@@ -82,9 +88,10 @@ export default {
               <h5>Stand 4</h5>
               <p>Quisque risus dolor, bibendum nec eros a, rutrum varius tellus. Maecenas ...</p>
             </div>
-            <button class="btn btn-primary my-3">VISITER</button>
+            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_4">VISITER</button>
           </div>
         </div>
+        <StandModal stand_id="4" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
 
         <div class="col-sm-6 col-lg-4">
           <div class="feature-box-1">
@@ -95,11 +102,11 @@ export default {
               <h5>Stand 5</h5>
               <p>Quisque risus dolor, bibendum nec eros a, rutrum varius tellus. Maecenas ...</p>
             </div>
-            <button class="btn btn-primary my-3">VISITER</button>
+            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_5">VISITER</button>
           </div>
         </div>
-        <!-- / -->
-        <!-- feaure box -->
+        <StandModal stand_id="5" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
+
         <div class="col-sm-6 col-lg-4">
           <div class="feature-box-1">
             <div class="icon shadow">
@@ -109,9 +116,10 @@ export default {
               <h5>Stand 6</h5>
               <p>Quisque risus dolor, bibendum nec eros a, rutrum varius tellus. Maecenas ...</p>
             </div>
-            <button class="btn btn-primary my-3">VISITER</button>
+            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_6">VISITER</button>
           </div>
         </div>
+        <StandModal stand_id="6" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
         <!-- / -->
       </div>
     </div>

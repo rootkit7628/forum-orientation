@@ -5,11 +5,13 @@ export default {
   name: 'HeadBar',
   data() {
     return {
-      user: null
+      user: null,
+      initial: null
     }
   },
   mounted() {
     this.setUser()
+    this.setInitial()
   },
   methods: {
     setUser() {
@@ -23,6 +25,15 @@ export default {
       this.user = null
       console.log()
       this.$router.push('/')
+    },
+    setInitial() {
+      const name = this.user.name.split(' ')
+      if (name.length === 1) {
+        this.initial = name[0].substring(0, 2).toUpperCase()
+      } else if (name.length === 2) {
+        this.initial = (name[0][0] + name[1][0]).toUpperCase()
+      }
+      this.initial = (name[0][0] + name[1][0]).toUpperCase()
     }
   }
 }
@@ -32,9 +43,9 @@ export default {
   <header>
     <nav class="navbar navbar-expand-lg navbar-light rounded py-2">
       <div class="container-fluid">
-        <a class="navbar-brand" to="#">
-          <img src="@/assets/logo.jpg" alt="" width="30" height="24" class="d-inline-block align-text-top" />
-          SESAME Promes
+        <a class="navbar-brand fs-3" to="#">
+          <img src="@/assets/logo.jpg" alt="" width="40" class="d-inline-block align-text-top" />
+          FORUM 2024
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
@@ -42,14 +53,15 @@ export default {
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto">
             <RouterLink to="/" class="nav-item nav-link active">Acceuil</RouterLink>
-            <a v-if="$route.name == 'home'" href="#speakers" class="nav-item nav-link">Intervenants</a>
             <a v-if="$route.name == 'home'" href="#sponsors" class="nav-item nav-link">Sponsors</a>
+            <a v-if="$route.name == 'home'" href="#speakers" class="nav-item nav-link">Intervenants</a>
             <RouterLink v-if="$route.name != 'home'" to="/stand" class="nav-item nav-link">Stands</RouterLink>
             <RouterLink v-if="$route.name != 'home'" to="/conference" class="nav-item nav-link">Conference</RouterLink>
             <RouterLink v-if="$route.name != 'home'" to="/fiche-metier" class="nav-item nav-link">Fiche Metier</RouterLink>
-            <RouterLink v-if="$route.name == 'home'" to="/register" type="button" class="btn btn-primary ms-2">Visiter</RouterLink>
-            <div v-else-if="user" class="dropdown ms-2">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user.name }}</button>
+            <RouterLink v-if="$route.name == 'home'" to="/register" type="button" class="nav-item btn btn-primary ms-2">Visiter</RouterLink>
+            <RouterLink v-if="user" to="/test" type="button" class="btn btn-danger ms-2 text-white h-75">Test d'orientation</RouterLink>
+            <div v-if="user" class="dropdown ms-2">
+              <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ initial }}</button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#" @click="logout()">Se Déconnecter</a></li>
               </ul>

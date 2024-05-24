@@ -6,7 +6,7 @@
         <div class="col-lg-6">
           <div class="section-title">
             <h3 class="ps-3">Vissionnez nos conférences et ateliers,</h3>
-            <p>Vous truverez ici les vidéos de nos conférences et ateliés durrant l'event</p>
+            <p>Accédez à des conseils précieux, des témoignages inspirants et des sessions interactives qui vous aideront à orienter votre carrière et à développer vos compétences.</p>
           </div>
         </div>
       </div>

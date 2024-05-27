@@ -75,10 +75,10 @@ export default {
               <h5>{{ stand.name }}</h5>
               <p class="description">{{ truncateDescription(stand.description) }}</p>
             </div>
-            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_1">VISITER</button>
+            <button class="btn btn-primary my-3" data-bs-toggle="modal" :data-bs-target="`#stand_${stand.id}`">VISITER</button>
           </div>
+          <StandModal :stand="stand" />
         </div>
-        <StandModal stand_id="1" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
       </div>
     </div>
   </section>

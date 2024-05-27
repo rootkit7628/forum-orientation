@@ -13,7 +13,8 @@
       <div class="row">
         <!-- feaure box -->
 
-        <div class="col-sm-6 col-lg-4 p-2 border-0">
+        <p class="fs-3">Les conférence ne seront disponible du Jour J c'est à dire le 31 Mai.</p>
+        <!-- <div class="col-sm-6 col-lg-4 p-2 border-0">
           <div class="row align-items-center">
             <div class="col-12">
               <div class="card bg-dark text-white border-0">
@@ -87,10 +88,6 @@
             </div>
           </div>
         </div>
-
-        <!-- / -->
-        <!-- feaure box -->
-
         <div class="col-sm-6 col-lg-4 p-2">
           <div class="row align-items-center">
             <div class="col-12">
@@ -104,8 +101,7 @@
               </div>
             </div>
           </div>
-        </div>
-        <!-- / -->
+        </div> -->
       </div>
     </div>
   </section>

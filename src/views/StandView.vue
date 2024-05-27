@@ -1,13 +1,17 @@
 <script>
 import { decrypt } from '@/utils/crypto'
 import StandModal from '@/components/modals/StandModal.vue'
+import pocketbaseService from '@/services/pocketbase'
+
 export default {
   data() {
     return {
       user: {
         name: '',
         email: ''
-      }
+      },
+      stands: Array,
+      service: null
     }
   },
   components: {
@@ -19,6 +23,32 @@ export default {
     } else {
       const session = localStorage.getItem('session')
       this.user = JSON.parse(decrypt(session))
+    }
+  },
+  async mounted() {
+    this.service = await pocketbaseService()
+    if (this.service) {
+      await this.service
+        .collection('entities')
+        .getList(1, 30, { expand: 'category' })
+        .then((response) => {
+          this.stands = response.items
+          if (this.stands) {
+            this.stands.sort((s1, s2) => s1.expand.category.level - s2.expand.category.level)
+          }
+        })
+    }
+  },
+  methods: {
+    getPocketbaseUrl(data) {
+      return this.service.baseUrl + `/api/files/${data.collectionId}/${data.id}/${data.logo}`
+    },
+    truncateDescription(description) {
+      const maxLength = 90 // Set the max length for the description
+      if (description.length > maxLength) {
+        return description.substring(0, maxLength) + '...'
+      }
+      return description
     }
   }
 }
@@ -38,89 +68,17 @@ export default {
         </div>
       </div>
       <div class="row">
-        <!-- feaure box -->
-        <div class="col-sm-6 col-lg-4">
+        <div class="col-sm-6 col-lg-4" v-for="stand in stands" :key="stand.id">
           <div class="feature-box-1">
-            <div class="icon shadow"><i class="bi bi-shop-window"></i></div>
+            <div class="icon shadow"><img class="img-fluid w-75" :src="getPocketbaseUrl(stand)" alt="" srcset="" /></div>
             <div class="feature-content">
-              <h5>Stand 1</h5>
-              <p>Integer mauris neque, gravida at euismod rutrum, venenatis in lorem...</p>
+              <h5>{{ stand.name }}</h5>
+              <p class="description">{{ truncateDescription(stand.description) }}</p>
             </div>
             <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_1">VISITER</button>
           </div>
         </div>
         <StandModal stand_id="1" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
-
-        <div class="col-sm-6 col-lg-4">
-          <div class="feature-box-1">
-            <div class="icon shadow">
-              <i class="bi bi-shop-window"></i>
-            </div>
-            <div class="feature-content">
-              <h5>Stand 2</h5>
-              <p>Quisque risus dolor, bibendum nec eros a, rutrum varius tellus. Maecenas ...</p>
-            </div>
-            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_2">VISITER</button>
-          </div>
-        </div>
-        <StandModal stand_id="2" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
-
-        <div class="col-sm-6 col-lg-4">
-          <div class="feature-box-1">
-            <div class="icon shadow">
-              <i class="bi bi-shop-window"></i>
-            </div>
-            <div class="feature-content">
-              <h5>Stand 3</h5>
-              <p>Quisque risus dolor, bibendum nec eros a, rutrum varius tellus. Maecenas ...</p>
-            </div>
-            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_3">VISITER</button>
-          </div>
-        </div>
-        <StandModal stand_id="3" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
-
-        <div class="col-sm-6 col-lg-4">
-          <div class="feature-box-1">
-            <div class="icon shadow">
-              <i class="bi bi-shop-window"></i>
-            </div>
-            <div class="feature-content">
-              <h5>Stand 4</h5>
-              <p>Quisque risus dolor, bibendum nec eros a, rutrum varius tellus. Maecenas ...</p>
-            </div>
-            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_4">VISITER</button>
-          </div>
-        </div>
-        <StandModal stand_id="4" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
-
-        <div class="col-sm-6 col-lg-4">
-          <div class="feature-box-1">
-            <div class="icon shadow">
-              <i class="bi bi-shop-window"></i>
-            </div>
-            <div class="feature-content">
-              <h5>Stand 5</h5>
-              <p>Quisque risus dolor, bibendum nec eros a, rutrum varius tellus. Maecenas ...</p>
-            </div>
-            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_5">VISITER</button>
-          </div>
-        </div>
-        <StandModal stand_id="5" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
-
-        <div class="col-sm-6 col-lg-4">
-          <div class="feature-box-1">
-            <div class="icon shadow">
-              <i class="bi bi-shop-window"></i>
-            </div>
-            <div class="feature-content">
-              <h5>Stand 6</h5>
-              <p>Quisque risus dolor, bibendum nec eros a, rutrum varius tellus. Maecenas ...</p>
-            </div>
-            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#stand_6">VISITER</button>
-          </div>
-        </div>
-        <StandModal stand_id="6" description="Integer mauris neque, gravida at euismod rutrum, venenatis in lorem..." />
-        <!-- / -->
       </div>
     </div>
   </section>
@@ -174,5 +132,10 @@ export default {
   font-weight: 700;
   margin: 0 0 15px;
   border-left: 5px solid var(--secondary);
+}
+
+.description {
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 </style>

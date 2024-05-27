@@ -15,7 +15,7 @@ export default {
 
 <template>
   <section id="speakers" class="py-5 my-5 rounded">
-    <div class="container mb-5">
+    <!-- <div class="container mb-5">
       <div class="row justify-content-md-center">
         <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6 text-center">
           <p class="mb-4 display-5">Intervenants</p>
@@ -64,6 +64,6 @@ export default {
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>

@@ -11,7 +11,9 @@ export default {
   },
   mounted() {
     this.setUser()
-    this.setInitial()
+    if (this.user) {
+      this.setInitial()
+    }
   },
   methods: {
     setUser() {
@@ -23,29 +25,26 @@ export default {
     logout() {
       localStorage.removeItem('session')
       this.user = null
-      console.log()
       this.$router.push('/')
     },
     setInitial() {
       const name = this.user.name.split(' ')
       if (name.length === 1) {
         this.initial = name[0].substring(0, 2).toUpperCase()
-      } else if (name.length === 2) {
+      } else {
         this.initial = (name[0][0] + name[1][0]).toUpperCase()
       }
-      this.initial = (name[0][0] + name[1][0]).toUpperCase()
     }
   }
 }
 </script>
 
 <template>
-  <header>
+  <header class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light rounded py-2">
       <div class="container-fluid">
-        <a class="navbar-brand fs-3" to="#">
+        <a class="navbar-brand fs-3 fw-bold p-2 shadow rounded" href="https://programme-sesame.mg">
           <img src="@/assets/logo.jpg" alt="" width="40" class="d-inline-block align-text-top" />
-          FORUM 2024
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>

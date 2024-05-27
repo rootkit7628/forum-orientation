@@ -42,12 +42,23 @@ export default {
                   <input v-model="name" type="text" class="form-control" id="name" autocomplete="name" required />
                 </div>
                 <div class="mb-4">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="email" class="form-label">Email ou Tel</label>
                   <input v-model="email" type="email" class="form-control" id="email" autocomplete="email" />
                 </div>
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="check-me-out" />
-                  <label class="form-check-label" for="check-me-out">Se souvenir de moi</label>
+                <div class="mb-4">
+                  <label for="age" class="form-label">Age</label>
+                  <input type="number" class="form-control" id="age" autocomplete="age" />
+                </div>
+                <div class="mb-4">
+                  <label for="occupation" class="form-label">Occupation</label>
+                  <select class="form-control form-control-lg" name="occupation">
+                    <option>Selectionnez votre occupation...</option>
+                    <option>Etudiant universitaire</option>
+                    <option>Enseignant</option>
+                    <option>Professionnel</option>
+                    <option>En recherche d'emploi</option>
+                    <option>Frêchement diplomé</option>
+                  </select>
                 </div>
                 <button type="submit" class="btn btn-success mt-2">Commencer la visite <i class="bi bi-box-arrow-in-right"></i></button>
               </form>

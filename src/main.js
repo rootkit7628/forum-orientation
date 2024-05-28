@@ -12,6 +12,6 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 const app = createApp(App)
 
 app.use(router)
-app.config.globalProperties.test_results = {}
+app.config.globalProperties.kavio_results = {}
 
 app.mount('#app')

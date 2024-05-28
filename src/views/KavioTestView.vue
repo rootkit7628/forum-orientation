@@ -1,5 +1,6 @@
 <script>
 import KavioTestForm from '@/components/forms/KavioTestForm.vue'
+import KavioResultSection from '@/components/sections/KavioResultSection.vue'
 import series from '@/data/test_series.json'
 
 export default {
@@ -14,7 +15,9 @@ export default {
     }
   },
   components: {
-    KavioTestForm
+    KavioTestForm,
+    KavioResultSection,
+    KavioResultSection
   }
 }
 </script>
@@ -38,6 +41,7 @@ export default {
       <button class="btn btn-success">Resultat Final</button>
     </div> -->
   </section>
+  <KavioResultSection />
 </template>
 
 <style scoped>

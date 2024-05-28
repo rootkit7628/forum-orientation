@@ -38,19 +38,19 @@ export default {
               <h3 class="py-3 text-center">Bienvenu cher visiteur</h3>
               <form @submit.prevent="register">
                 <div class="mb-4">
-                  <label for="name" class="form-label">Nom</label>
+                  <label for="name" class="form-label">Nom (<span>obligatoire</span>)</label>
                   <input v-model="name" type="text" class="form-control" id="name" autocomplete="name" required />
                 </div>
                 <div class="mb-4">
-                  <label for="email" class="form-label">Email ou Tel</label>
+                  <label for="email" class="form-label">Email ou Tel (<span>Optionnel</span>)</label>
                   <input v-model="email" type="email" class="form-control" id="email" autocomplete="email" />
                 </div>
                 <div class="mb-4">
-                  <label for="age" class="form-label">Age</label>
+                  <label for="age" class="form-label">Age (<span>Optionnel</span>)</label>
                   <input type="number" class="form-control" id="age" autocomplete="age" />
                 </div>
                 <div class="mb-4">
-                  <label for="occupation" class="form-label">Occupation</label>
+                  <label for="occupation" class="form-label">Occupation (<span>Optionnel</span>)</label>
                   <select class="form-control form-control-md" name="occupation">
                     <option>Selectionnez votre occupation...</option>
                     <option>Etudiant universitaire</option>

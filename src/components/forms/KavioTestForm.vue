@@ -56,7 +56,7 @@ export default {
         }
       }
 
-      this.test_results[this.serie.id] = totals
+      this.kavio_results[this.serie.id] = totals
       return totals
     },
     result() {

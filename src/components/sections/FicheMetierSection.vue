@@ -8,7 +8,10 @@ export default {
 </script>
 <template>
   <section id="fiche-metier" class="container-fluid">
-    <div class="search-bar container">
+    <div class="text-center p-5 mt-5">
+      <p class="fs-3">Les fiches metiers ne sont pas disponibles pour le moments. Revenez ultérieurement :)</p>
+    </div>
+    <!-- <div class="search-bar container">
       <div class="row">
         <div class="col">
           <div class="btn-group mb-3" role="group" aria-label="Category filter">
@@ -93,7 +96,7 @@ export default {
         <button class="btn btn-secondary bg-opacity-10" data-bs-toggle="modal" data-bs-target="#fiche_6">Afficher</button>
       </div>
       <FicheMetierModal fiche_id="6" title="Conseiller en voyages" />
-    </div>
+    </div> -->
   </section>
 </template>
 

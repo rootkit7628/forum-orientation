@@ -51,7 +51,7 @@ export default {
                 </div>
                 <div class="mb-4">
                   <label for="occupation" class="form-label">Occupation</label>
-                  <select class="form-control form-control-lg" name="occupation">
+                  <select class="form-control form-control-md" name="occupation">
                     <option>Selectionnez votre occupation...</option>
                     <option>Etudiant universitaire</option>
                     <option>Enseignant</option>

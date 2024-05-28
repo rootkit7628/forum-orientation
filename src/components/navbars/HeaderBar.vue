@@ -53,7 +53,7 @@ export default {
           <div class="navbar-nav ms-auto">
             <RouterLink to="/" class="nav-item nav-link active">Acceuil</RouterLink>
             <a v-if="$route.name == 'home'" href="#sponsors" class="nav-item nav-link">Sponsors</a>
-            <a v-if="$route.name == 'home'" href="#speakers" class="nav-item nav-link">Intervenants</a>
+            <!-- <a v-if="$route.name == 'home'" href="#speakers" class="nav-item nav-link">Intervenants</a> -->
             <RouterLink v-if="!['home', 'register'].includes($route.name)" to="/stand" class="nav-item nav-link">Stands</RouterLink>
             <RouterLink v-if="!['home', 'register'].includes($route.name)" to="/conference" class="nav-item nav-link">Conference</RouterLink>
             <RouterLink v-if="!['home', 'register'].includes($route.name)" to="/fiche-metier" class="nav-item nav-link">Fiche Metier</RouterLink>

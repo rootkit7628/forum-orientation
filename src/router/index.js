@@ -29,9 +29,9 @@ const router = createRouter({
       component: () => import('@/views/FicheMetierView.vue')
     },
     {
-      path: '/test',
-      name: 'test',
-      component: () => import('@/views/TestView.vue')
+      path: '/kavio-test',
+      name: 'kavio-test',
+      component: () => import('@/views/KavioTestView.vue')
     }
   ]
 })

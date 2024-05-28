@@ -54,11 +54,11 @@ export default {
             <RouterLink to="/" class="nav-item nav-link active">Acceuil</RouterLink>
             <a v-if="$route.name == 'home'" href="#sponsors" class="nav-item nav-link">Sponsors</a>
             <a v-if="$route.name == 'home'" href="#speakers" class="nav-item nav-link">Intervenants</a>
-            <RouterLink v-if="$route.name != 'home'" to="/stand" class="nav-item nav-link">Stands</RouterLink>
-            <RouterLink v-if="$route.name != 'home'" to="/conference" class="nav-item nav-link">Conference</RouterLink>
-            <RouterLink v-if="$route.name != 'home'" to="/fiche-metier" class="nav-item nav-link">Fiche Metier</RouterLink>
+            <RouterLink v-if="!['home', 'register'].includes($route.name)" to="/stand" class="nav-item nav-link">Stands</RouterLink>
+            <RouterLink v-if="!['home', 'register'].includes($route.name)" to="/conference" class="nav-item nav-link">Conference</RouterLink>
+            <RouterLink v-if="!['home', 'register'].includes($route.name)" to="/fiche-metier" class="nav-item nav-link">Fiche Metier</RouterLink>
             <RouterLink v-if="$route.name == 'home'" to="/register" type="button" class="nav-item btn btn-primary ms-2">Visiter</RouterLink>
-            <RouterLink v-if="$route.name != 'home' && $route.name != 'register'" to="/test" type="button" class="btn btn-danger ms-2 text-white h-75">Test d'orientation</RouterLink>
+            <RouterLink v-if="!['home', 'register'].includes($route.name)" to="/kavio-test" type="button" class="btn btn-danger ms-2 text-white h-75">Test d'orientation</RouterLink>
             <div v-if="$route.name != 'home' && $route.name != 'register'" class="dropdown ms-2">
               <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ initial }}</button>
               <ul class="dropdown-menu">

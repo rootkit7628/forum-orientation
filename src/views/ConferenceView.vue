@@ -11,10 +11,9 @@
         </div>
       </div>
       <div class="row">
-        <!-- feaure box -->
-
         <p class="fs-3">Les conférence ne seront disponible du Jour J c'est à dire le 31 Mai.</p>
-        <!-- <div class="col-sm-6 col-lg-4 p-2 border-0">
+        <!--
+        <div class="col-sm-6 col-lg-4 p-2 border-0">
           <div class="row align-items-center">
             <div class="col-12">
               <div class="card bg-dark text-white border-0">
@@ -28,80 +27,7 @@
             </div>
           </div>
         </div>
-
-        <div class="col-sm-6 col-lg-4 p-2">
-          <div class="row align-items-center">
-            <div class="col-12">
-              <div class="card bg-dark text-white border-0">
-                <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" class="card-img-top" muted autoplay loop></video>
-
-                <div class="card-img-overlay">
-                  <h5 class="card-title">Conference</h5>
-                  <a class="card-text btn btn-secondary border-0">VISIONNER</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-lg-4 p-2">
-          <div class="row align-items-center">
-            <div class="col-12">
-              <div class="card bg-dark text-white border-0">
-                <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" class="card-img-top" muted autoplay loop></video>
-
-                <div class="card-img-overlay">
-                  <h5 class="card-title">Conference</h5>
-                  <a class="card-text btn btn-secondary border-0">VISIONNER</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-lg-4 p-2">
-          <div class="row align-items-center">
-            <div class="col-12">
-              <div class="card bg-dark text-white border-0">
-                <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" class="card-img-top" muted autoplay loop></video>
-
-                <div class="card-img-overlay">
-                  <h5 class="card-title">Conference</h5>
-                  <a class="card-text btn btn-secondary">VISIONNER</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-lg-4 p-2">
-          <div class="row align-items-center">
-            <div class="col-12">
-              <div class="card bg-dark text-white border-0">
-                <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" class="card-img-top" muted autoplay loop></video>
-
-                <div class="card-img-overlay">
-                  <h5 class="card-title">Conference</h5>
-                  <a class="card-text btn btn-secondary border-0">VISIONNER</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 p-2">
-          <div class="row align-items-center">
-            <div class="col-12">
-              <div class="card bg-dark text-white border-0">
-                <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" class="card-img-top" muted autoplay loop></video>
-
-                <div class="card-img-overlay">
-                  <h5 class="card-title">Conference</h5>
-                  <a class="card-text btn btn-secondary border-0">VISIONNER</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
+        -->
       </div>
     </div>
   </section>

@@ -90,7 +90,7 @@ export default {
     </div>
 
     <div class="row pb-4">
-      <div class="col-6" v-for="(bloc, bloc_id) in serie.item_blocs" :key="bloc_id">
+      <div class="col-md-6" v-for="(bloc, bloc_id) in serie.item_blocs" :key="bloc_id">
         <table class="table shadow-sm m-3">
           <tbody>
             <tr v-for="(item, item_id) in bloc" :key="item_id">

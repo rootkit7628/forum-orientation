@@ -1,7 +1,19 @@
 <script>
+import pocketbaseService from '@/services/pocketbase'
+import ImageStandCarousel from '@/components/carousels/ImageStandCarousel.vue'
+import DocumentStandCarousel from '../carousels/DocumentStandCarousel.vue'
+
 export default {
   data() {
-    return {}
+    return {
+      service: null,
+      images: [],
+      documents: []
+    }
+  },
+  components: {
+    ImageStandCarousel,
+    DocumentStandCarousel
   },
   props: {
     stand: {
@@ -9,7 +21,29 @@ export default {
       required: true
     }
   },
-  methods: {}
+  async mounted() {
+    this.service = await pocketbaseService()
+    this.getStandFiles()
+  },
+  methods: {
+    async getStandFiles() {
+      await this.service
+        .collection('files')
+        .getFirstListItem(`entity.id="${this.stand.id}"`)
+        .then((file) => {
+          this.images = file.images.map((image) => {
+            return this.service.baseUrl + `/api/files/${file.collectionId}/${file.id}/${image}`
+          })
+          this.documents = file.documents.map((doc) => {
+            return {
+              name: doc,
+              file: this.service.baseUrl + `/api/files/${file.collectionId}/${file.id}/${doc}`
+            }
+          })
+        })
+        .catch((error) => {})
+    }
+  }
 }
 </script>
 
@@ -18,19 +52,26 @@ export default {
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content border-0 shadow">
         <div class="modal-header border-0">
-          <h5 class="modal-title" id="exampleModalLabel">Bienvenu sur le stand {{  stand.name }}!</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Bienvenu sur le stand {{ stand.name }}!</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="bg-light bg-light rounded p-3 mb-4">
             <h4>{{ stand.name }}</h4>
-            <span>{{ stand.mail }}</span><br>
+            <span>{{ stand.mail }}</span
+            ><br />
             <span>{{ stand.contact }}</span>
           </div>
           <div>
             {{ stand.description }}
           </div>
-          <div class="mt-3 card bg-dark border-0">
+          <div v-if="images.length > 0" class="mt-5 border-0">
+            <h5 class="my-3">Galerie</h5>
+            <ImageStandCarousel :stand_id="stand.id" :images="images" />
+          </div>
+          <div v-if="documents.length > 0" class="mt-5 border-0">
+            <h5 class="my-3">Documents</h5>
+            <DocumentStandCarousel :stand_id="stand.id" :docs="documents" />
           </div>
           <div class="mt-5">
             <h5>Contacts</h5>
@@ -45,7 +86,7 @@ export default {
                   <i class="bi bi-facebook fs-3"></i>
                 </a>
               </div>
-              <div  v-if="stand.linkedin" class="col">
+              <div v-if="stand.linkedin" class="col">
                 <a class="text-decoration-none text-success" href="#" target="_blank">
                   <i class="bi bi-linkedin fs-3"></i>
                 </a>

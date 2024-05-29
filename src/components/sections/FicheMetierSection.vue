@@ -19,7 +19,7 @@ export default {
     async getDomains() {
       await this.service
         .collection('domains')
-        .getList(1, 20)
+        .getList()
         .then((response) => {
           this.domains = response.items
         })
@@ -57,9 +57,9 @@ export default {
       </div>
     </div>
     <div class="p-2 container">
-      <div class="job-item p-1 bg-light rounded" v-for="job of jobs" :key="job.id" :id="job.id">
+      <div class="d-flex job-item p-1 bg-light rounded mb-2" v-for="job of jobs" :key="job.id" :id="job.id">
         <div class="job-title">
-          <img class="img-thumbnail rounded me-2" width="30px" :src="getPocketbaseUrl(job)" alt="Product Manager" />
+          <img class="img-thumbnail rounded ms-1 me-2" width="30px" :src="getPocketbaseUrl(job)" alt="Product Manager" />
           <div>
             <p class="mb-0">{{ job.name }}</p>
           </div>
@@ -72,14 +72,9 @@ export default {
 </template>
 
 <style scoped>
-body {
-  background-color: #f9f9f9;
-}
 .job-item {
-  display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
 }
 .job-item .job-title {
   display: flex;

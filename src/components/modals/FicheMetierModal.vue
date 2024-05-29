@@ -11,6 +11,10 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    image: {
+      type: String,
+      required: true
     }
   },
   methods: {}
@@ -26,7 +30,7 @@ export default {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <iframe src="https://www.clickdimensions.com/links/TestPDFfile.pdf#toolbar=0&navpanes=0&scrollbar=0" frameBorder="0" scrolling="auto" height="100%" width="100%"></iframe>
+          <img class="img-fluid" :src="image" alt="" />
         </div>
       </div>
     </div>

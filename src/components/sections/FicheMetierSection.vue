@@ -1,6 +1,41 @@
 <script>
+import pocketbaseService from '@/services/pocketbase'
+
 import FicheMetierModal from '../modals/FicheMetierModal.vue'
 export default {
+  data() {
+    return {
+      domains: null,
+      jobs: null,
+      service: null
+    }
+  },
+  async mounted() {
+    this.service = await pocketbaseService()
+    this.getDomains()
+    this.getJobs()
+  },
+  methods: {
+    async getDomains() {
+      await this.service
+        .collection('domains')
+        .getList(1, 20)
+        .then((response) => {
+          this.domains = response.items
+        })
+    },
+    async getJobs() {
+      await this.service
+        .collection('jobs')
+        .getList(1, 20)
+        .then((response) => {
+          this.jobs = response.items
+        })
+    },
+    getPocketbaseUrl(data) {
+      return this.service.baseUrl + `/api/files/${data.collectionId}/${data.id}/${data.file}`
+    }
+  },
   components: {
     FicheMetierModal
   }
@@ -8,95 +43,31 @@ export default {
 </script>
 <template>
   <section id="fiche-metier" class="container-fluid">
-    <div class="text-center p-5 mt-5">
-      <p class="fs-3">Les fiches metiers ne sont pas disponibles pour le moments. Revenez ultérieurement :)</p>
-    </div>
-    <!-- <div class="search-bar container">
+    <div class="p-2 mt-5 container">
       <div class="row">
         <div class="col">
-          <div class="btn-group mb-3" role="group" aria-label="Category filter">
-            <button type="button" class="btn btn-light rounded-4 mx-2">All</button>
-            <button type="button" class="btn btn-light rounded-4 mx-2">Informatique</button>
-            <button type="button" class="btn btn-light rounded-4 mx-2">Santé</button>
-            <button type="button" class="btn btn-light rounded-4 mx-2">Social</button>
-            <button type="button" class="btn btn-light rounded-4 mx-2">Tourisme</button>
-            <button type="button" class="btn btn-light rounded-4 mx-2">Marketing</button>
-            <button type="button" class="btn btn-light rounded-4 mx-2">Finance</button>
-            <button type="button" class="btn btn-light rounded-4 mx-2">Formation</button>
-            <button type="button" class="btn btn-light rounded-4 mx-2">Envirinnement</button>
+          <div class="category-container mb-3 pb-3">
+            <div class="btn-group" role="group" aria-label="Category filter">
+              <button type="button" class="btn btn-light rounded-4 mx-2">All</button>
+              <button v-for="domain of domains" type="button" class="btn btn-light rounded-4 mx-2" :key="domain.id">{{ domain.name }}</button>
+            </div>
           </div>
           <input type="text" class="form-control rounded-4 py-2 px-4" placeholder="Search fiche metier" />
         </div>
       </div>
     </div>
-
-    <div class="job-list container">
-      <div class="job-item p-2 bg-light rounded">
+    <div class="p-2 container">
+      <div class="job-item p-1 bg-light rounded" v-for="job of jobs" :key="job.id" :id="job.id">
         <div class="job-title">
-          <img class="rounded" src="https://via.placeholder.com/40" alt="Product Manager" />
+          <img class="img-thumbnail rounded me-2" width="30px" :src="getPocketbaseUrl(job)" alt="Product Manager" />
           <div>
-            <p class="mb-0">Product Manager</p>
+            <p class="mb-0">{{ job.name }}</p>
           </div>
         </div>
-        <button class="btn btn-secondary bg-opacity-10" data-bs-toggle="modal" data-bs-target="#fiche_1">Afficher</button>
+        <button class="btn btn-secondary bg-opacity-10" data-bs-toggle="modal" :data-bs-target="`#fiche_${job.id}`">Afficher</button>
+        <FicheMetierModal :fiche_id="job.id" :image="getPocketbaseUrl(job)" title="Product Manager" />
       </div>
-      <FicheMetierModal fiche_id="1" title="Product Manager" />
-
-      <div class="job-item p-2 bg-light rounded">
-        <div class="job-title">
-          <img class="rounded" src="https://via.placeholder.com/40" alt="Product Designer" />
-          <div>
-            <p class="mb-0">Responsables Achats</p>
-          </div>
-        </div>
-        <button class="btn btn-secondary bg-opacity-10" data-bs-toggle="modal" data-bs-target="#fiche_2">Afficher</button>
-      </div>
-      <FicheMetierModal fiche_id="2" title="Responsables Achats" />
-
-      <div class="job-item p-2 bg-light rounded">
-        <div class="job-title">
-          <img class="rounded" src="https://via.placeholder.com/40" alt="Software Engineer" />
-          <div>
-            <p class="mb-0">Responsable Vignes et Chais</p>
-          </div>
-        </div>
-        <button class="btn btn-secondary bg-opacity-10" data-bs-toggle="modal" data-bs-target="#fiche_3">Afficher</button>
-      </div>
-      <FicheMetierModal fiche_id="3" title="Responsables Achats" />
-
-      <div class="job-item p-2 bg-light rounded">
-        <div class="job-title">
-          <img class="rounded" src="https://via.placeholder.com/40" alt="Data Analyst" />
-          <div>
-            <p class="mb-0">Bachelor Finance</p>
-          </div>
-        </div>
-        <button class="btn btn-secondary bg-opacity-10" data-bs-toggle="modal" data-bs-target="#fiche_4">Afficher</button>
-      </div>
-      <FicheMetierModal fiche_id="4" title="Bachelor Finance" />
-
-      <div class="job-item p-2 bg-light rounded">
-        <div class="job-title">
-          <img class="rounded" src="https://via.placeholder.com/40" alt="Data Scientist" />
-          <div>
-            <p class="mb-0">BTS Tourisme</p>
-          </div>
-        </div>
-        <button class="btn btn-secondary bg-opacity-10" data-bs-toggle="modal" data-bs-target="#fiche_5">Afficher</button>
-      </div>
-      <FicheMetierModal fiche_id="5" title="BTS Tourisme" />
-
-      <div class="job-item p-2 bg-light rounded">
-        <div class="job-title">
-          <img class="rounded" src="https://via.placeholder.com/40" alt="UX Designer" />
-          <div>
-            <p class="mb-0">Conseiller en voyages</p>
-          </div>
-        </div>
-        <button class="btn btn-secondary bg-opacity-10" data-bs-toggle="modal" data-bs-target="#fiche_6">Afficher</button>
-      </div>
-      <FicheMetierModal fiche_id="6" title="Conseiller en voyages" />
-    </div> -->
+    </div>
   </section>
 </template>
 
@@ -104,39 +75,37 @@ export default {
 body {
   background-color: #f9f9f9;
 }
-.navbar {
-  background-color: #fff;
-  padding: 10px 0;
-}
-.navbar-nav .nav-link {
-  color: #333;
-  margin-right: 20px;
-}
-.navbar-nav .nav-link:hover {
-  color: #000;
-}
-.navbar-nav .btn {
-  margin-left: 10px;
-}
-.search-bar {
-  padding: 20px;
-}
-.job-list {
-  padding: 20px;
-}
 .job-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
 }
-.job-item img {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-}
 .job-item .job-title {
   display: flex;
   align-items: center;
+}
+.category-container {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.category-container::-webkit-scrollbar {
+  margin: 5%;
+  width: 12px;
+}
+.category-container::-webkit-scrollbar-track {
+  background: #c6c7c88c;
+  border-radius: 10px;
+}
+.category-container::-webkit-scrollbar-thumb {
+  background: #c6c7c8;
+  border-radius: 10px;
+}
+.btn-group {
+  display: inline-flex;
+}
+.btn {
+  flex-shrink: 0;
 }
 </style>

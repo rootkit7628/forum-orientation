@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     getPocketbaseUrl(data) {
-      return this.pb_service.files.getUrl(data, data.logo, { thumb: '200x200' })
+      return this.pb_service.files.getUrl(data, data.logo)
     },
     truncateDescription(description) {
       const maxLength = 90 // Set the max length for the description

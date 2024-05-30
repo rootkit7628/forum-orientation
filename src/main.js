@@ -11,11 +11,18 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 
 import pocketbaseService from '@/services/pocketbase'
 
-const app = createApp(App)
+async function initApp() {
+  const app = createApp(App)
 
-app.use(router)
+  app.use(router)
 
-app.config.globalProperties.pb_service = await pocketbaseService()
-app.config.globalProperties.kavio_results = {}
+  const pbService = await pocketbaseService()
+  app.config.globalProperties.pb_service = pbService
+  app.config.globalProperties.kavio_results = {}
 
-app.mount('#app')
+  app.mount('#app')
+}
+
+initApp().catch((error) => {
+  console.error('Failed to initialize the app:', error)
+})

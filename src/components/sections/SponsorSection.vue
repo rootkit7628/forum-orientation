@@ -25,7 +25,7 @@ export default {
 
   methods: {
     getPocketbaseUrl(data) {
-      return this.pb_service.files.getUrl(data, data.logo, { thumb: '200x200' })
+      return this.pb_service.files.getUrl(data, data.logo)
     }
   }
 }

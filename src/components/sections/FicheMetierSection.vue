@@ -60,9 +60,8 @@ export default {
       this.search.domain = domain
       this.getJobs()
     },
-    searchQuery(query) {
+    searchQuery() {
       this.pagination.currentPage = 1
-      this.search.query = query
       this.getJobs()
     }
   },
@@ -91,7 +90,7 @@ export default {
               </button>
             </div>
           </div>
-          <input type="text" class="form-control rounded-4 py-2 px-4" placeholder="Search fiche metier" />
+          <input type="text" class="form-control rounded-4 py-2 px-4" placeholder="Search fiche metier" v-model="search.query" @input="searchQuery" />
         </div>
       </div>
     </div>

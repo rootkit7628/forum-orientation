@@ -1,5 +1,5 @@
 <script>
-import { ref } from 'vue'
+import { inject } from 'vue'
 
 export default {
   data() {
@@ -17,13 +17,16 @@ export default {
       required: true
     }
   },
+  setup() {
+    const state = inject('state')
+    return { state }
+  },
   methods: {
     getKey(serie_id, bloc_id, item_id) {
       return serie_id + '-' + bloc_id + '-' + item_id
     },
     setValue(serie_id, bloc_id, item_id, val) {
       this.scores[this.getKey(serie_id, bloc_id, item_id)] = val
-      console.log(this.scores)
     }
   },
   computed: {
@@ -56,7 +59,7 @@ export default {
         }
       }
 
-      this.kavio_results[this.serie.id] = totals
+      this.state.kavio_results[this.serie.id] = totals
       return totals
     },
     result() {

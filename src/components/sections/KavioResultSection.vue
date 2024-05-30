@@ -1,19 +1,23 @@
 <script>
+import { inject } from 'vue'
 import text_results from '@/data/test_result.json'
 
 export default {
+  setup() {
+    const state = inject('state')
+    return { state }
+  },
   data() {
     return {
       text_results: text_results
     }
   },
-  methods: {},
   computed: {
     final_results() {
       const totals = { A: 0, I: 0, R: 0, S: 0, C: 0, E: 0 }
-      for (let part in this.kavio_results) {
+      for (let part in this.state.kavio_results) {
         for (let type in totals) {
-          totals[type] += this.kavio_results[part][type]
+          totals[type] += this.state.kavio_results[part][type]
         }
       }
 
@@ -35,7 +39,10 @@ export default {
           maxType = type
         }
       }
-      return this.text_results[maxType]
+      return {
+        type: maxType,
+        value: this.text_results[maxType]
+      }
     }
   }
 }
@@ -62,30 +69,30 @@ export default {
         <tbody>
           <tr class="table-danger">
             <td>Partie 1</td>
-            <td>{{ kavio_results['1'].A }}</td>
-            <td>{{ kavio_results['1'].I }}</td>
-            <td>{{ kavio_results['1'].R }}</td>
-            <td>{{ kavio_results['1'].S }}</td>
-            <td>{{ kavio_results['1'].C }}</td>
-            <td>{{ kavio_results['1'].E }}</td>
+            <td>{{ this.state.kavio_results['1'].A }}</td>
+            <td>{{ this.state.kavio_results['1'].I }}</td>
+            <td>{{ this.state.kavio_results['1'].R }}</td>
+            <td>{{ this.state.kavio_results['1'].S }}</td>
+            <td>{{ this.state.kavio_results['1'].C }}</td>
+            <td>{{ this.state.kavio_results['1'].E }}</td>
           </tr>
           <tr class="table-success">
             <td>Partie 2</td>
-            <td>{{ kavio_results['2'].A }}</td>
-            <td>{{ kavio_results['2'].I }}</td>
-            <td>{{ kavio_results['2'].R }}</td>
-            <td>{{ kavio_results['2'].S }}</td>
-            <td>{{ kavio_results['2'].C }}</td>
-            <td>{{ kavio_results['2'].E }}</td>
+            <td>{{ this.state.kavio_results['2'].A }}</td>
+            <td>{{ this.state.kavio_results['2'].I }}</td>
+            <td>{{ this.state.kavio_results['2'].R }}</td>
+            <td>{{ this.state.kavio_results['2'].S }}</td>
+            <td>{{ this.state.kavio_results['2'].C }}</td>
+            <td>{{ this.state.kavio_results['2'].E }}</td>
           </tr>
           <tr class="table-primary">
             <td>Partie 3</td>
-            <td>{{ kavio_results['3'].A }}</td>
-            <td>{{ kavio_results['3'].I }}</td>
-            <td>{{ kavio_results['3'].R }}</td>
-            <td>{{ kavio_results['3'].S }}</td>
-            <td>{{ kavio_results['3'].C }}</td>
-            <td>{{ kavio_results['3'].E }}</td>
+            <td>{{ this.state.kavio_results['3'].A }}</td>
+            <td>{{ this.state.kavio_results['3'].I }}</td>
+            <td>{{ this.state.kavio_results['3'].R }}</td>
+            <td>{{ this.state.kavio_results['3'].S }}</td>
+            <td>{{ this.state.kavio_results['3'].C }}</td>
+            <td>{{ this.state.kavio_results['3'].E }}</td>
           </tr>
           <tr class="table-warning">
             <td>Totaux</td>
@@ -101,8 +108,8 @@ export default {
     </div>
 
     <div class="my-2 p-2 bg-light">
-      <h5>Resultat Final :</h5>
-      <p>{{ final_res }}</p>
+      <h5><strong>Resultat Final</strong> : Tu es de type {{ final_res.type }}</h5>
+      <p>{{ final_res.value }}</p>
     </div>
   </section>
 </template>

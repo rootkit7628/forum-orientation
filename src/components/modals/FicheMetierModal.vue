@@ -1,8 +1,5 @@
 <script>
 export default {
-  data() {
-    return {}
-  },
   props: {
     fiche: {
       type: Object,

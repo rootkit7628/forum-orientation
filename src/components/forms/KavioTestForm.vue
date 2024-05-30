@@ -120,62 +120,6 @@ export default {
       </div>
     </div>
 
-    <div class="row pb-4">
-      <table class="table table-bordered text-center shadow-sm w-75 ms-4">
-        <thead>
-          <tr>
-            <th colspan="2">Type A</th>
-            <th colspan="2">Type I</th>
-            <th colspan="2">Type R</th>
-            <th colspan="2">Type S</th>
-            <th colspan="2">Type C</th>
-            <th colspan="2">Type E</th>
-          </tr>
-          <tr>
-            <th>Question n°</th>
-            <th>Score</th>
-            <th>Question n°</th>
-            <th>Score</th>
-            <th>Question n°</th>
-            <th>Score</th>
-            <th>Question n°</th>
-            <th>Score</th>
-            <th>Question n°</th>
-            <th>Score</th>
-            <th>Question n°</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(bloc, bloc_id) in serie.item_blocs" :key="bloc_id">
-            <template v-for="(item, item_id) in bloc" :key="item_id">
-              <td>{{ item_id + 1 + (bloc_id) * 6 }}</td>
-              <td>{{ scores[getKey(serie.id, bloc_id, item_id)] }}</td>
-            </template>
-          </tr>
-          <tr>
-            <td class="bg-light" colspan="12"></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th class="bg-light">Totaux</th>
-            <th>{{ totals.A }}</th>
-            <th class="bg-light"></th>
-            <th>{{ totals.I }}</th>
-            <th class="bg-light"></th>
-            <th>{{ totals.R }}</th>
-            <th class="bg-light"></th>
-            <th>{{ totals.S }}</th>
-            <th class="bg-light"></th>
-            <th>{{ totals.C }}</th>
-            <th class="bg-light"></th>
-            <th>{{ totals.E }}</th>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-
     <div v-if="result" :id="`result_${serie.id}`" class="my-2 p-2 bg-light">
       <h5>Resultat Partie {{ serie.id }}</h5>
       <p v-for="(res, res_id) in result" :key="res_id" v-html="res"></p>

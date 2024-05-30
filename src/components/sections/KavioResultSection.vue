@@ -107,8 +107,10 @@ export default {
       </table>
     </div>
 
-    <div class="my-2 p-2 bg-light">
-      <h5><strong>Resultat Final</strong> : Tu es de type {{ final_res.type }}</h5>
+    <div class="my-2 p-2 bg-light" v-if="final_res">
+      <h5>
+        <strong>Resultat Final</strong> : <span class="text-success">Tu es de type {{ final_res.type }}</span>
+      </h5>
       <p>{{ final_res.value }}</p>
     </div>
   </section>

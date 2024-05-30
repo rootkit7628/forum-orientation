@@ -26,9 +26,8 @@ export default {
     }
   },
   async mounted() {
-    this.service = await pocketbaseService()
-    if (this.service) {
-      await this.service
+    if (this.pb_service) {
+      await this.pb_service
         .collection('entities')
         .getList(1, 30, { expand: 'category' })
         .then((response) => {
@@ -41,7 +40,7 @@ export default {
   },
   methods: {
     getPocketbaseUrl(data) {
-      return this.service.baseUrl + `/api/files/${data.collectionId}/${data.id}/${data.logo}`
+      return this.pb_service.files.getUrl(data, data.logo, { thumb: '200x200' })
     },
     truncateDescription(description) {
       const maxLength = 90 // Set the max length for the description

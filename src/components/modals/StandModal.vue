@@ -6,7 +6,6 @@ import DocumentStandCarousel from '../carousels/DocumentStandCarousel.vue'
 export default {
   data() {
     return {
-      service: null,
       images: [],
       documents: []
     }
@@ -22,22 +21,21 @@ export default {
     }
   },
   async mounted() {
-    this.service = await pocketbaseService()
     this.getStandFiles()
   },
   methods: {
     async getStandFiles() {
-      await this.service
+      await this.pb_service
         .collection('files')
         .getFirstListItem(`entity.id="${this.stand.id}"`)
         .then((file) => {
           this.images = file.images.map((image) => {
-            return this.service.baseUrl + `/api/files/${file.collectionId}/${file.id}/${image}`
+            return this.pb_service.baseUrl + `/api/files/${file.collectionId}/${file.id}/${image}`
           })
           this.documents = file.documents.map((doc) => {
             return {
               name: doc,
-              file: this.service.baseUrl + `/api/files/${file.collectionId}/${file.id}/${doc}`
+              file: this.pb_service.baseUrl + `/api/files/${file.collectionId}/${file.id}/${doc}`
             }
           })
         })

@@ -26,20 +26,15 @@ export default {
   methods: {
     async getStandFiles() {
       await this.pb_service
-        .collection('files')
-        .getFirstListItem(`entity.id="${this.stand.id}"`)
-        .then((file) => {
-          this.images = file.images.map((image) => {
-            return this.pb_service.baseUrl + `/api/files/${file.collectionId}/${file.id}/${image}`
-          })
-          this.documents = file.documents.map((doc) => {
-            return {
-              name: doc,
-              file: this.pb_service.baseUrl + `/api/files/${file.collectionId}/${file.id}/${doc}`
-            }
-          })
+        .collection('assets')
+        .getList(1, 20, { filter: `entity.id = "${this.stand.id}"`, requestKey: this.stand.id })
+        .then((assets) => {
+          this.images = assets.items.filter((asset) => asset.type === 'image')
+          this.documents = assets.items.filter((asset) => asset.type === 'document')
         })
-        .catch((error) => {})
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
 }

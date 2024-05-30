@@ -9,13 +9,18 @@ export default {
       type: Array,
       required: true
     }
+  },
+  methods: {
+    getDocumentUrl(data) {
+      return this.pb_service.files.getUrl(data, data.file, { download: true })
+    }
   }
 }
 </script>
 <template>
   <div class="doc-container mb-3 pb-3">
     <div class="btn-group" role="group" aria-label="Category filter">
-      <a v-for="(doc, doc_id) of docs" type="button" class="btn btn-light rounded-4 mx-2" :key="doc_id" :href="doc.file" target="_blank">
+      <a v-for="(doc, doc_id) of docs" type="button" class="btn btn-light rounded-4 mx-2" :key="doc_id" :href="getDocumentUrl(doc)" target="_blank">
         <div><i class="fs-4 bi bi-file-earmark-arrow-down"></i></div>
         <span>{{ doc.name }}</span>
       </a>

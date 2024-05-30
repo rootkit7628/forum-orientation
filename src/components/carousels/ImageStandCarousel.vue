@@ -9,6 +9,11 @@ export default {
       type: Array,
       required: true
     }
+  },
+  methods: {
+    getImageUrl(data) {
+      return this.pb_service.files.getUrl(data, data.file)
+    }
   }
 }
 </script>
@@ -16,7 +21,7 @@ export default {
   <div :id="`image_stand_${stand_id}`" v-if="images != []" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div v-for="(image, key) of images" :key="key" :id="key" class="carousel-item" :class="key == 0 ? 'active' : ''">
-        <img :src="image" class="d-block mx-auto fixed-height-image rounded" alt="..." />
+        <img :src="getImageUrl(image)" class="d-block mx-auto fixed-height-image rounded" alt="..." />
       </div>
     </div>
     <button class="carousel-control-prev" type="button" :data-bs-target="`#image_stand_${stand_id}`" data-bs-slide="prev">

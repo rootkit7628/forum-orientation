@@ -66,7 +66,8 @@ export default {
     },
     viewFiche(id) {
       this.pb_service.collection('stats').create({
-        fiche: id
+        fiche: id,
+        plateform: 'web'
       })
     }
   },

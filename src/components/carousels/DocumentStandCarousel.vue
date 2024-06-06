@@ -17,7 +17,8 @@ export default {
     viewDocument(id) {
       this.pb_service.collection('stats').create({
         entity: this.stand_id,
-        asset: id
+        asset: id,
+        plateform: 'web'
       })
     }
   }

@@ -52,7 +52,8 @@ export default {
     viewStand(id) {
       this.pb_service.collection('stats').create({
         entity: id,
-        user_id: this.user.id
+        user_id: this.user.id,
+        plateform: 'web'
       })
     }
   }

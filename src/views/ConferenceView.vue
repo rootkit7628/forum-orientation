@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="row">
-        <p class="fs-3">Les conférence ne seront disponible du Jour J c'est à dire le 31 Mai.</p>
+        <p class="fs-3">Les conférences ne sont pas disponibles pour le moment. Revenez plus tard :)</p>
         <!--
         <div class="col-sm-6 col-lg-4 p-2 border-0">
           <div class="row align-items-center">

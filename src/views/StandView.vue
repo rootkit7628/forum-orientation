@@ -11,7 +11,9 @@ export default {
         email: ''
       },
       stands: Array,
-      service: null
+      currentPage: 1,
+      pageSize: 6,
+      totalStands: 0
     }
   },
   components: {
@@ -26,19 +28,20 @@ export default {
     }
   },
   async mounted() {
-    if (this.pb_service) {
-      await this.pb_service
-        .collection('entities')
-        .getList(1, 30, { expand: 'category' })
-        .then((response) => {
-          this.stands = response.items
-          if (this.stands) {
-            this.stands.sort((s1, s2) => s1.expand.category.level - s2.expand.category.level)
-          }
-        })
-    }
+    await this.fetchStands()
   },
   methods: {
+    async fetchStands() {
+      if (this.pb_service) {
+        await this.pb_service
+          .collection('entities')
+          .getList(this.currentPage, this.pageSize, { expand: 'category', sort: 'category.level' })
+          .then((response) => {
+            this.stands = response.items
+            this.totalStands = response.totalItems
+          })
+      }
+    },
     getPocketbaseUrl(data) {
       return this.pb_service.files.getUrl(data, data.logo)
     },
@@ -49,12 +52,21 @@ export default {
       }
       return description
     },
+    async changePage(page) {
+      this.currentPage = page
+      await this.fetchStands()
+    },
     viewStand(id) {
       this.pb_service.collection('stats').create({
         entity: id,
         user_id: this.user.id,
         plateform: 'web'
       })
+    }
+  },
+  computed: {
+    totalPages() {
+      return Math.ceil(this.totalStands / this.pageSize)
     }
   }
 }
@@ -86,6 +98,23 @@ export default {
           <StandModal :stand="stand" />
         </div>
       </div>
+      <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center pagination-lg">
+          <li class="page-item" :class="{ disabled: currentPage === 1 }">
+            <a class="page-link text-success" @click.prevent="changePage(currentPage - 1)" href="#">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item" :class="{ active: page === currentPage }" v-for="page in totalPages" :key="page">
+            <a class="page-link text-success" @click.prevent="changePage(page)" href="#">{{ page }}</a>
+          </li>
+          <li class="page-item" :class="{ disabled: currentPage === totalPages }">
+            <a class="page-link text-success" @click.prevent="changePage(currentPage + 1)" href="#">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </section>
 </template>
@@ -143,5 +172,11 @@ export default {
 .description {
   word-break: break-word;
   overflow-wrap: break-word;
+}
+
+.active > .page-link {
+  background-color: var(--secondary) !important;
+  color: white !important;
+  border-color: var(--secondary) !important;
 }
 </style>

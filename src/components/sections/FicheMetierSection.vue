@@ -63,6 +63,11 @@ export default {
     searchQuery() {
       this.pagination.currentPage = 1
       this.getJobs()
+    },
+    viewFiche(id) {
+      this.pb_service.collection('stats').create({
+        fiche: id
+      })
     }
   },
   components: {
@@ -102,7 +107,7 @@ export default {
             <p class="mb-0">{{ job.name }}</p>
           </div>
         </div>
-        <button class="btn btn-secondary bg-opacity-10" data-bs-toggle="modal" :data-bs-target="`#fiche_${job.id}`">Afficher</button>
+        <button class="btn btn-secondary bg-opacity-10" data-bs-toggle="modal" :data-bs-target="`#fiche_${job.id}`" @click="viewFiche(job.id)">Afficher</button>
         <FicheMetierModal :fiche_id="job.id" :fiche="job" title="Product Manager" />
       </div>
     </div>

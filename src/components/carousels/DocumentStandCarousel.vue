@@ -13,6 +13,12 @@ export default {
   methods: {
     getDocumentUrl(data) {
       return this.pb_service.files.getUrl(data, data.file, { download: true })
+    },
+    viewDocument(id) {
+      this.pb_service.collection('stats').create({
+        entity: this.stand_id,
+        asset: id
+      })
     }
   }
 }
@@ -20,7 +26,7 @@ export default {
 <template>
   <div class="doc-container mb-3 pb-3">
     <div class="btn-group" role="group" aria-label="Category filter">
-      <a v-for="(doc, doc_id) of docs" type="button" class="btn btn-light rounded-4 mx-2" :key="doc_id" :href="getDocumentUrl(doc)" target="_blank">
+      <a v-for="(doc, doc_id) of docs" type="button" class="btn btn-light rounded-4 mx-2" :key="doc_id" :href="getDocumentUrl(doc)" target="_blank" @click="viewDocument(doc.id)">
         <div><i class="fs-4 bi bi-file-earmark-arrow-down"></i></div>
         <span>{{ doc.name }}</span>
       </a>

@@ -48,6 +48,12 @@ export default {
         return description.substring(0, maxLength) + '...'
       }
       return description
+    },
+    viewStand(id) {
+      this.pb_service.collection('stats').create({
+        entity: id,
+        user_id: this.user.id
+      })
     }
   }
 }
@@ -74,7 +80,7 @@ export default {
               <h5>{{ stand.name }}</h5>
               <p class="description">{{ truncateDescription(stand.description) }}</p>
             </div>
-            <button class="btn btn-primary my-3" data-bs-toggle="modal" :data-bs-target="`#stand_${stand.id}`">VISITER</button>
+            <button class="btn btn-primary my-3" data-bs-toggle="modal" :data-bs-target="`#stand_${stand.id}`" @click="viewStand(stand.id)">VISITER</button>
           </div>
           <StandModal :stand="stand" />
         </div>

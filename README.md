@@ -1,6 +1,5 @@
-# forum
-
-This template should help get you started developing with Vue 3 in Vite.
+# Sesame Forum Webstie 
+A website for an event organised by Programme SESAME IECD - 2024 Edition
 
 ## Stacks:
 - Vuejs 3
